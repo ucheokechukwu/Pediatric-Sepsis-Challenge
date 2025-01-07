@@ -1,3 +1,5 @@
+import inspect
+
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from imblearn.combine import SMOTEENN, SMOTETomek
@@ -14,7 +16,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from imblearn.over_sampling import SMOTE
 from imblearn.pipeline import Pipeline as ImbPipeline
-
+from helper_functions.get_name import get_name
 
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -64,7 +66,7 @@ def get_train_test_data(data, test_size=0.2):
     return X_train, X_test, y_train, y_test
 
 
-def evaluate_methods(data, preprocessor, pca, classifier):
+def evaluate_methods(data, preprocessor, pca, classifier, model_name=None, pca_after_smote=True):
     """
     Evaluates different methods of handling imbalanced data with class weighting.
 
@@ -95,12 +97,23 @@ def evaluate_methods(data, preprocessor, pca, classifier):
 
         # Create pipeline
         steps = [('preprocessor', preprocessor)]
-        if oversampler is not None:
-            steps.append(('oversample', oversampler))
-        if pca is not None:
-            steps.extend([('pca', pca), ('classifier', classifier)])
+
+        if pca_after_smote:
+            if oversampler is not None:
+                steps.append(('oversample', oversampler))
+            if pca is not None:
+                steps.extend([('pca', pca), ('classifier', classifier)])
+            else:
+                steps.extend([('classifier', classifier)])
         else:
-            steps.extend([('classifier', classifier)])
+            if pca is not None:
+                steps.append(('pca', pca))
+            if oversampler is not None:
+                steps.extend([('oversample', oversampler),
+                             ('classifier', classifier)])
+            else:
+                steps.extend([('classifier', classifier)])
+
         pipeline = ImbPipeline(steps)
 
         # Fit pipeline
@@ -124,12 +137,12 @@ def evaluate_methods(data, preprocessor, pca, classifier):
         }
 
     # Plot results
-    plot_results(results)
+    plot_results(results, model_name)
 
     return results
 
 
-def plot_results(results):
+def plot_results(results, model_name):
     """
     Plots precision and recall for each method.
 
@@ -158,7 +171,8 @@ def plot_results(results):
     # Add labels and legend
     ax.set_xlabel('Methods')
     ax.set_ylabel('Scores')
-    ax.set_title('Precision and Recall for Different Methods')
+    ax.set_title(
+        f'{model_name}: Precision and Recall for Different Class Balancing Methods')
     ax.set_xticks(x)
     ax.set_xticklabels(methods, rotation=45, ha='right')
     ax.legend(loc='best')
@@ -167,19 +181,21 @@ def plot_results(results):
     plt.show()
 
 
-def plot_comparison_results(results_rf, results_svc, results_xgb):
+def plot_comparison_results(results):
     """
     Plots a comparison of precision and recall metrics for Random Forest, SVC, and XGBoost models.
 
     Parameters:
+        results: a list of tuples of the form (model_name, model_results)
         results_rf: Dictionary of results for Random Forest.
         results_svc: Dictionary of results for SVC.
         results_xgb: Dictionary of results for XGBoost.
     """
     # Combine results into a DataFrame
+
+    models = {k: v for (k, v) in results}
+
     combined_results = []
-    models = {'Random Forest': results_rf,
-              'SVC': results_svc, 'XGBoost': results_xgb}
     for model_name, results in models.items():
         for method, metrics in results.items():
             combined_results.append({
@@ -250,6 +266,7 @@ def plot_comparison_results(results_rf, results_svc, results_xgb):
             )
         ]
     )
-
+    # Dynamically set visibility for all traces except "Recall Class 1"
+    # fig.update_traces(visible=[i % 4 == 3 for i in range(len(fig.data))])
     # Show plot
     fig.show()
