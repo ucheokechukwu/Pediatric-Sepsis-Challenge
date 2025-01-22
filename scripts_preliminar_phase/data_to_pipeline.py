@@ -125,17 +125,17 @@ def model_training(data, numerical_cols, categorical_cols):
     return pipeline
 
 
-def model_training_main(cleaned_data=None, verbose=True):
+def model_training_main(cleaned_data=None, verbose=False):
     # prepare data
-    print("preparing data now...") if verbose else ""
+    print("preparing data now...") if verbose else None
     data, numerical_cols, categorical_cols = get_cleaned_data()
-    print("preparing data completed...") if verbose else ""
+    print("preparing data completed...") if verbose else None
 
     # training model
-    print("training model now...") if verbose else ""
+    print("training model now...") if verbose else None
     pipeline = model_training(data, numerical_cols, categorical_cols)
     print(pipeline)
-    print("\n\n\ntraining model complete...") if verbose else ""
+    print("\n\n\ntraining model complete...") if verbose else None
     return pipeline, None
 
 
