@@ -53,6 +53,9 @@ def train_challenge_model(data_folder, model_folder, verbose=False):
     # remove the cleaned_data.csv file
     os.remove(f"{DATA_PATH}cleaned_data.csv")
 
+    # Create a folder for the model if it does not already exist.
+    os.makedirs(model_folder, exist_ok=True)
+
     # Save the models.
     save_challenge_model(model_folder, imputer, prediction_model)
 
@@ -215,7 +218,6 @@ def get_cleaned_data(data_path=DATA_PATH):
     # fill in missing values using 'most frequent' for categorical
     # and 'median' for numerical values
 
-    print(f"Missing values before imputation: {data.isna().sum().sum()}")
     # Separate numerical and categorical columns
     numerical_cols = data.select_dtypes(include=['number']).columns
     categorical_cols = data.select_dtypes(exclude=['number']).columns
@@ -265,12 +267,6 @@ def get_train_test_data(data, test_size=0.2):
         X, y, test_size=test_size, stratify=y, random_state=42
     )
 
-    # Verify stratification
-    print("Class distribution in training data:")
-    print(y_train.value_counts(normalize=True))
-    print("\nClass distribution in test data:")
-    print(y_test.value_counts(normalize=True))
-
     return X_train, X_test, y_train, y_test
 
 
@@ -315,8 +311,7 @@ def model_training_main(cleaned_data=None, verbose=False):
     # training model
     print("training model now...") if verbose else None
     pipeline = model_training(data, numerical_cols, categorical_cols)
-    print(pipeline)
-    print("\n\n\ntraining model complete...") if verbose else None
+    print("\n\n\nTraining model complete...") if verbose else None
     return pipeline, None
 
 
