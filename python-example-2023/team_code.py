@@ -117,6 +117,12 @@ def run_challenge_model(model, data_folder, verbose):
 ################################################################################
 #
 # Optional functions. You can change or remove these functions and/or add new functions.
+#
+################################################################################
+
+###########################################
+# Data cleaning and feature extraction
+###########################################
 
 # Load the raw dataset
 def load_raw_data(file_path):
@@ -286,8 +292,10 @@ def data_cleaning_main(input_file, verbose=False):
     save_cleaned_data(cleaned_data, output_file)
     return imputer
 
-# Code for model training
 
+###########################################
+# Model training
+###########################################
 
 class ModelPipeline:
     def __init__(self, data_path=CLEANED_DATA_PATH, target_column=TARGET, test_size=0.2, random_state=42):
@@ -380,6 +388,10 @@ def model_training_main(verbose=False):
     pipeline = model_pipeline.run(verbose)
     return pipeline
 
+################################################################################
+#
+# End Optional functions
+#
 ################################################################################
 
 # Save your trained model.
