@@ -45,7 +45,9 @@ N_COMPONENTS = 3
 # Train your model.
 
 def train_challenge_model(data_folder, model_folder, verbose=False):
-    input_file = f"{data_folder}/SyntheticData_training.csv"
+    verbose = True
+    # data_folder is actually a file.
+    input_file = f"{data_folder}"
     imputer = data_cleaning_main(input_file, verbose)
     prediction_model = model_training_main(verbose)
 
