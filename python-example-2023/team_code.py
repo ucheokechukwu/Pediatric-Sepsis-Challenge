@@ -60,30 +60,6 @@ def train_challenge_model(data_folder, model_folder, verbose=False):
 
     print("Model and imputer have been trained and saved. Ready to run") if verbose else None
 
-    ################################################################################
-    #
-    # Temporary code to test that the model, imputer can be loaded and be applied to the test data correctly.
-    #
-    ################################################################################
-
-    test_data = load_raw_data(
-        "../SyntheticData_training.csv").sample(frac=0.01, random_state=42)
-
-    model = load_challenge_model(model_folder, True)
-
-    imputer_t = model['imputer']
-    prediction_model_t = model['prediction_model']
-
-    data_imputed = imputer_t.transform(test_data)
-
-    # Apply model to data.
-    prediction_binary = prediction_model_t.predict(data_imputed)[:]
-    prediction_probability = prediction_model_t.predict_proba(data_imputed)[
-        :, 1]
-
-    print(prediction_binary)
-    print(prediction_probability)
-
 
 # Load your trained models. This function is *required*. You should edit this function to add your code, but do *not* change the
 # arguments of this function.
@@ -102,8 +78,6 @@ def run_challenge_model(model, data_folder, verbose):
     # Load data.
     patient_ids, data, label, features = load_challenge_data(data_folder)
 
-    data = pd.get_dummies(data)
-
     # Impute missing data.
     data_imputed = imputer.transform(data)
 
@@ -111,6 +85,7 @@ def run_challenge_model(model, data_folder, verbose):
     prediction_binary = prediction_model.predict(data_imputed)[:]
     prediction_probability = prediction_model.predict_proba(data_imputed)[:, 1]
 
+    print("Successfully passed test data to trained model and received prediction values.") if verbose else None
     return patient_ids, prediction_binary, prediction_probability
 
 
