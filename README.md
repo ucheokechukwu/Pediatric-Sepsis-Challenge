@@ -22,3 +22,5 @@ Develop an open-source algorithm to predict in-hospital mortality among children
 - Asmaa Chraibi asmaachr@gmail.com
 - Uche Okechukwu ucheokechukwu@gmail.com
 - Carol Calderon cmcalderonr1093@gmail.com
+
+## Please be aware that preliminar_phase_submision folder contains the first submission. 
