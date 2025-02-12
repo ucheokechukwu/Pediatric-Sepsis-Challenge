@@ -1,0 +1,17 @@
+Measurement,Normal Low,Normal High,Impossible Low,Impossible High
+muac_mm_adm,90,210,60,250
+hr_bpm_adm,80,160,40,220
+rr_brpm_app_adm,20,50,5,80
+sysbp_mmhg_adm,70,110,50,160
+diasbp_mmhg_adm,40,70,20,100
+temp_c_adm,35,39.5,30,42
+spo2site1_pc_oxi_adm,92,100,70,100
+spo2site2_pc_oxi_adm,92,100,70,100
+spo2other_adm,92,100,70,100
+hematocrit_gpdl_adm,30,45,15,60
+lactate_mmolpl_adm,0.5,2.5,0.2,10
+lactate2_mmolpl_adm,0.5,2.5,0.2,10
+glucose_mmolpl_adm,3,6,1,25
+sqi1_perc_oxi_adm,90,100,50,100
+sqi2_perc_oxi_adm,85,100,50,100
+Export to Sheets,,,,

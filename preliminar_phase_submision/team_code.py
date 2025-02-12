@@ -134,9 +134,9 @@ class DataImputer:
         data.drop(columns=['studyid_adm', 'lengthadm'], inplace=True)
 
         # Remove intervention columns
-        intervention_columns = data.columns[data.columns.str.contains(
-            'admitabx_adm_')]
-        data.drop(columns=intervention_columns, inplace=True)
+        # intervention_columns = data.columns[data.columns.str.contains(
+        #     'admitabx_adm_')]
+        # data.drop(columns=intervention_columns, inplace=True)
 
         # Define age groups
         data['age_group'] = pd.cut(
@@ -203,9 +203,9 @@ class DataImputer:
                   errors='ignore', inplace=True)
 
         # Remove intervention columns
-        intervention_columns = data.columns[data.columns.str.contains(
-            'admitabx_adm_')]
-        data.drop(columns=intervention_columns, errors='ignore', inplace=True)
+        # intervention_columns = data.columns[data.columns.str.contains(
+        #     'admitabx_adm_')]
+        # data.drop(columns=intervention_columns, errors='ignore', inplace=True)
 
         # Define age groups
         data['age_group'] = pd.cut(

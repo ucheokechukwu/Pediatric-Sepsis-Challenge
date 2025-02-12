@@ -1,0 +1,474 @@
+Type,Feature,Description,Category,Missing values,Notes
+Intervention,admitabx_adm___2,"What anti-infective(s) were given at admission (check all that apply)?
+
+[PO Ampicillin/Amoxicillin]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___3,"What anti-infective(s) were given at admission (check all that apply)?
+
+[IV Penicillin]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___4,"What anti-infective(s) were given at admission (check all that apply)?
+
+[PO Penicillin]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___5,"What anti-infective(s) were given at admission (check all that apply)?
+
+[IV Cloxacillin]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___6,"What anti-infective(s) were given at admission (check all that apply)?
+
+[PO Amoxicillin-Clavulanic Acid]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___7,"What anti-infective(s) were given at admission (check all that apply)?
+
+[PO Cefpodoxime or Cefuroxime]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___8,"What anti-infective(s) were given at admission (check all that apply)?
+
+[IV Ceftriaxone]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___9,"What anti-infective(s) were given at admission (check all that apply)?
+
+[IV Gentamicin]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___10,"What anti-infective(s) were given at admission (check all that apply)?
+
+[PO or IV Ciprofloxacin or Levofloxacin]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___11,"What anti-infective(s) were given at admission (check all that apply)?
+
+[PO Nalidixic Acid]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___12,"What anti-infective(s) were given at admission (check all that apply)?
+
+[IV Vancomycin]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___13,"What anti-infective(s) were given at admission (check all that apply)?
+
+[PO Sulfamethoxazole Trimethoprim]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___14,"What anti-infective(s) were given at admission (check all that apply)?
+
+[IV or PO Metronidazole]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___15,"What anti-infective(s) were given at admission (check all that apply)?
+
+[IV or PO Albendazole or Mebendazole]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___16,"What anti-infective(s) were given at admission (check all that apply)?
+
+[IV or PO antimalarial]","Categorical 
+(Clinical)",No missing values,
+Intervention,admitabx_adm___17,"What anti-infective(s) were given at admission (check all that apply)?
+
+[TB medications]","Categorical 
+(Clinical)",No missing values,
+Admission,vaccpneumoc_adm,Has the child received a pneumococcal vaccination?,"Categorical 
+(Clinical)",No missing values,
+Admission,spo2onoxy_adm,Was SpO2 measured while on oxygen?,"Categorical
+(Clinical)","4 missing values
+(0.1%)",
+Admission,oxygenavail_adm,What is the child's supplementary oxygen status?,"Categorical
+(Clinical)",No missing values,
+Admission,respdistress_adm,Does the child have severe respiratory distress (grunting/severe chest indrawing)?,"Categorical
+(Clinical)","2 missing values
+(0.1%)",
+Admission,caprefill_adm,Does the child have a capillary refill of 3 or more seconds?,"Categorical
+(Clinical)","1 missing value
+(0.0%)",
+Admission,bcseye_adm,Eye movement (Blantyre Coma Scale),"Categorical
+(Clinical)","1 missing value
+(0.0%)",
+Admission,bcsmotor_adm,Best motor response (Blantyre Coma Scale),"Categorical
+(Clinical)",No missing values,
+Admission,bcsverbal_adm,Best verbal response (Blantyre Coma Scale),"Categorical
+(Clinical)","2 missing values
+(0.1%)",
+Intervention,admitabx_adm___1,"What anti-infective(s) were given at admission (check all that apply)?
+
+[IV Ampicillin or Amoxicillin]","Categorical
+(Clinical)",No missing values,
+Intervention,admitabx_adm___18,"What anti-infective(s) were given at admission (check all that apply)?
+
+[HIV medications]","Categorical
+(Clinical)",No missing values,
+Intervention,admitabx_adm___19,"What anti-infective(s) were given at admission (check all that apply)?
+
+[Malaria medications]","Categorical
+(Clinical)",No missing values,
+Intervention,admitabx_adm___20,"What anti-infective(s) were given at admission (check all that apply)?
+
+[Other (specify)]","Categorical
+(Clinical)",No missing values,Indicates an antimicrobial was given that is not one of the specific options provided.
+Intervention,admitabx_adm___21,"What anti-infective(s) were given at admission (check all that apply)?
+
+[None]","Categorical
+(Clinical)",No missing values,
+Admission,bcgscar_adm,"Has BCG scar (if <6m, verbal report of vaccine OK)?","Categorical
+(Clinical)",No missing values,
+Admission,vaccmeasles_adm,Has the child received a measles vaccination?,"Categorical
+(Clinical)","2 missing values
+(0.1%)",
+Admission,vaccmeaslessource_adm,What is the source of the information regarding measles vaccination?,"Categorical
+(Clinical)","946 missing values
+(35.2%)",
+Admission,vaccpneumocsource_adm,What is the source of the information regarding pneumococcal vaccination?,"Categorical
+(Clinical)","185 missing values
+(6.8%)",
+Admission,vaccdpt_adm,Has the child received a DPT/Penta vaccination?,"Categorical
+(Clinical)","2 missing values
+(0.1%)",
+Admission,vaccdptsource_adm,What is the source of the information regarding DPT/Penta vaccination?,"Categorical
+(Clinical)","143 missing values
+(5.3%)",
+Admission,priorweekabx_adm,Has the child used antibiotics in the past week?,"Categorical
+(Clinical)",No missing values,
+Admission,priorweekantimal_adm,Has the child used antimalarials in the past week?,"Categorical
+(Clinical)","1 missing value
+(0.0%)",
+Admission,symptoms_adm___1,"Symptoms during the course of this illness (check all that apply)?
+
+[Rash]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___2,"Symptoms during the course of this illness (check all that apply)?
+
+[Cough < 14 days]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___3,"Symptoms during the course of this illness (check all that apply)?
+
+[Cough >14 days]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___4,"Symptoms during the course of this illness (check all that apply)?
+
+[Diarrhea < 14 days]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___5,"Symptoms during the course of this illness (check all that apply)?
+
+[Diarrhea >14 days]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___6,"Symptoms during the course of this illness (check all that apply)?
+
+[Fever/hotness of body <7 days]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___7,"Symptoms during the course of this illness (check all that apply)?
+
+[Fever/hotness of body>7 days]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___8,"Symptoms during the course of this illness (check all that apply)?
+
+[Vomiting everything]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___9,"Symptoms during the course of this illness (check all that apply)?
+
+[Abnormally sleepy]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___10,"Symptoms during the course of this illness (check all that apply)?
+
+[Swelling of both feet]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___11,"Symptoms during the course of this illness (check all that apply)?
+
+[Changes in urine color]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___12,"Symptoms during the course of this illness (check all that apply)?
+
+[Making less urine than usual]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___13,"Symptoms during the course of this illness (check all that apply)?
+
+[Blood in stool]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___14,"Symptoms during the course of this illness (check all that apply)?
+
+[Seizure/convulsions]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___15,"Symptoms during the course of this illness (check all that apply)?
+
+[Coma]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___16,"Symptoms during the course of this illness (check all that apply)?
+
+[Yellow soles (if < 2mold)]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___17,"Symptoms during the course of this illness (check all that apply)?
+
+[None]","Categorical
+(Clinical)",No missing values,
+Admission,symptoms_adm___18,"Symptoms during the course of this illness (check all that apply)?
+
+[Don't know]","Categorical
+(Clinical)",No missing values,
+Admission,comorbidity_adm___1,"Co-morbid diagnoses (check all that apply). Note: Do not include HIV, anemia or malnutrition here.
+
+[Reactive airway disease/asthma/allergy]","Categorical
+(Clinical)",No missing values,
+Admission,comorbidity_adm___2,"Co-morbid diagnoses (check all that apply). Note: Do not include HIV, anemia or malnutrition here.
+
+[Oncologic disease]","Categorical
+(Clinical)",No missing values,
+Admission,comorbidity_adm___3,"Co-morbid diagnoses (check all that apply). Note: Do not include HIV, anemia or malnutrition here.
+
+[Cardiac disease]","Categorical
+(Clinical)",No missing values,
+Admission,comorbidity_adm___4,"Co-morbid diagnoses (check all that apply). Note: Do not include HIV, anemia or malnutrition here.
+
+[Endocrine disease (like diabetes)]","Categorical
+(Clinical)",No missing values,
+Admission,comorbidity_adm___5,"Co-morbid diagnoses (check all that apply). Note: Do not include HIV, anemia or malnutrition here.
+
+[Sickle cell disease]","Categorical
+(Clinical)",No missing values,
+Admission,comorbidity_adm___6,"Co-morbid diagnoses (check all that apply). Note: Do not include HIV, anemia or malnutrition here.
+
+[Tuberculosis]","Categorical
+(Clinical)",No missing values,
+Admission,comorbidity_adm___7,"Co-morbid diagnoses (check all that apply). Note: Do not include HIV, anemia or malnutrition here.
+
+[Physical/mental/developmental disability]","Categorical
+(Clinical)",No missing values,
+Admission,comorbidity_adm___8,"Co-morbid diagnoses (check all that apply). Note: Do not include HIV, anemia or malnutrition here.
+
+[Hydrocephalus]","Categorical
+(Clinical)",No missing values,
+Admission,comorbidity_adm___9,"Co-morbid diagnoses (check all that apply). Note: Do not include HIV, anemia or malnutrition here.
+
+[Trauma/injury]","Categorical
+(Clinical)",No missing values,
+Admission,comorbidity_adm___10,"Co-morbid diagnoses (check all that apply). Note: Do not include HIV, anemia or malnutrition here.
+
+[Other co-morbidity]","Categorical
+(Clinical)",No missing values,Indicates comorbidity that is not one of the specific options provided.
+Admission,comorbidity_adm___11,"Co-morbid diagnoses (check all that apply). Note: Do not include HIV, anemia or malnutrition here.
+
+[None]","Categorical
+(Clinical)",No missing values,
+Admission,comorbidity_adm___12,"Co-morbid diagnoses (check all that apply). Note: Do not include HIV, anemia or malnutrition here.
+
+[Don't know]","Categorical
+(Clinical)",No missing values,
+Admission,priorhosp_adm,How long has it been since your child's last hospitalization?,"Categorical
+(Clinical)","5 missing values
+(0.2%)",
+Admission,prioryearwheeze_adm,"Prior to this illness, has your child had wheezing in the last year?","Categorical
+(Clinical)","2 missing values
+(0.1%)",
+Admission,prioryearcough_adm,"Prior to this illness, has your child had cough, difficulty breathing or chest indrawing in the last year?","Categorical
+(Clinical)",No missing values,
+Admission,diarrheaoften_adm,Does your child have diarrhea often?,"Categorical
+(Clinical)",No missing values,
+Admission,tbcontact_adm,"Does anyone living with the child have chronic cough, frequent fevers or weight loss?","Categorical
+(Clinical)",No missing values,
+Admission,feedingstatus_adm,Current feeding/drinking status (for both breastfed and non-breastfed subjects)?,"Categorical
+(Clinical)",No missing values,
+Admission,exclbreastfed_adm,For how many months was this child exclusively breastfed (months)?,"Categorical
+(Clinical)","1 missing value
+(0.0%)",
+Admission,nonexclbreastfed_adm,Non-exclusive breastfeeding details,"Categorical
+(Clinical)","2603 missing values
+(96.9%)",Only asked if prior question is “0”
+Admission,totalbreastfed_adm,How long was your child breastfed in total?,"Categorical
+(Clinical)","2 missing values
+(0.1%)",
+Admission,deliveryloc_adm,Where was your child born?,"Categorical
+(Clinical)","2 missing values
+(0.1%)",
+Admission,birthattend_adm,Did anyone help with the birth of your child?,"Categorical
+(Clinical)",No missing values,
+Admission,duedateknown_adm,Do you remember the due date of this child?,"Categorical
+(Clinical)",No missing values,
+Admission,birthdetail_adm___1,"Please provide birth details (select any that apply)
+
+[Premature]","Categorical
+(Clinical)",No missing values,
+Admission,birthdetail_adm___2,"Please provide birth details (select any that apply)
+
+[Born small (<2500g)]","Categorical
+(Clinical)",No missing values,
+Admission,birthdetail_adm___3,"Please provide birth details (select any that apply)
+
+[Born small (weight not known)]","Categorical
+(Clinical)",No missing values,
+Admission,birthdetail_adm___4,"Please provide birth details (select any that apply)
+
+[Twin/multiple birth]","Categorical
+(Clinical)",No missing values,
+Admission,birthdetail_adm___5,"Please provide birth details (select any that apply)
+
+[Born at term]","Categorical
+(Clinical)",No missing values,
+Admission,birthdetail_adm___6,"Please provide birth details (select any that apply)
+
+[Don't know]","Categorical
+(Clinical)",No missing values,
+Outcome,inhospital_mortality,Did the patient die in hospital?,"Categorical
+(Clinical)",No missing values,"0, No
+1, Yes"
+Admission,hctpretransfusion_adm,Was above hematocrit collected prior to any transfusion?,"Categorical
+(Laboratory)","43 missing values
+(1.6%)",
+Admission,hivstatus_adm,HIV status,"Categorical
+(Laboratory)","5 missing values
+(0.2%)",
+Admission,malariastatuspos_adm,Malaria test positive?,"Categorical
+(Laboratory)","2 missing values
+(0.1%)",
+Admission,sex_adm,Sex,"Categorical
+(Patient details)",No missing values,
+Admission,travelmethod_adm,How did you travel to the hospital?,"Categorical
+(Social)","1 missing value
+(0.0%)",
+Admission,traveldist_adm,How long did it take you to travel to the hospital?,"Categorical
+(Social)","1 missing value
+(0.0%)",
+Admission,badhealthduration_adm,How long has the child had this problem of generally bad health?,"Categorical
+(Social)","4 missing values
+(0.1%)",
+Admission,caregiver_adm_new,Who is this child's primary caregiver,"Categorical
+(Social)","3 missing values
+(0.1%)",
+Admission,caregiverage_adm,Primary caregiver age,"Categorical
+(Social)","2 missing values
+(0.1%)",
+Admission,caregivermarried_adm,Current marital status of primary caregiver,"Categorical
+(Social)",No missing values,
+Admission,momalive_adm,Is the child's mother alive?,"Categorical
+(Social)","1 missing value
+(0.0%)",
+Admission,momageknown_adm,Is mother's age known?,"Categorical
+(Social)","22 missing values
+(0.8%)",
+Admission,momagefirstpregknown_adm,Is the child's mother's age at first pregnancy known?,"Categorical
+(Social)","1 missing value
+(0.0%)",
+Admission,momedu_adm,What is the education level of the child's mother?,"Categorical
+(Social)",No missing values,
+Admission,momhiv_adm,Maternal HIV status,"Categorical
+(Social)","6 missing values
+(0.2%)",
+Admission,watersource_adm,Primary water source for drinking water,"Categorical
+(Social)","2 missing values
+(0.1%)",
+Admission,waterpure_adm,"Do you boil, filter (good sand/ceramic) or disinfect (using bleach/waterguard) all drinking water?","Categorical
+(Social)","2 missing values
+(0.1%)",
+Admission,cookfuel_adm___1,"Which types of cooking fuel do you use (check all that apply)?
+
+[Charcoal]","Categorical
+(Social)",No missing values,
+Admission,cookfuel_adm___2,"Which types of cooking fuel do you use (check all that apply)?
+
+[Wood]","Categorical
+(Social)",No missing values,
+Admission,cookfuel_adm___3,"Which types of cooking fuel do you use (check all that apply)?
+
+[Grass/shrubs]","Categorical
+(Social)",No missing values,
+Admission,cookfuel_adm___4,"Which types of cooking fuel do you use (check all that apply)?
+
+[Propane]","Categorical
+(Social)",No missing values,
+Admission,cookfuel_adm___5,"Which types of cooking fuel do you use (check all that apply)?
+
+[Electricity]","Categorical
+(Social)",No missing values,
+Admission,cookfuel_adm___6,"Which types of cooking fuel do you use (check all that apply)?
+
+[Kerosene or Paraffin]","Categorical
+(Social)",No missing values,
+Admission,cookfuel_adm___7,"Which types of cooking fuel do you use (check all that apply)?
+
+[Biogas]","Categorical
+(Social)",No missing values,
+Admission,cookfuel_adm___8,"Which types of cooking fuel do you use (check all that apply)?
+
+[Other (specify)]","Categorical
+(Social)",No missing values,Free text field – indicates cooking fuel that is not one of the specific options provided.
+Admission,cookloc_adm,Where is the cooking usually done?,"Categorical
+(Social)","2 missing values
+(0.1%)",
+Admission,lightfuel_adm,What is your primary source of lighting?,"Categorical
+(Social)","3 missing values
+(0.1%)",
+Admission,tobacco_adm,How often does anyone smoke tobacco in your house,"Categorical
+(Social)",No missing values,
+Admission,bednet_adm,Does your child sleep under a mosquito net?,"Categorical
+(Social)","3 missing values
+(0.1%)",
+Admission,height_cm_adm,Height or length (in cm),"Continuous 
+(Clinical)","14 missing values
+(0.5%)",
+Admission,agecalc_adm,Age at admission (in months),"Continuous 
+(Patient details)",No missing values,
+Admission,weight_kg_adm,Weight (in kg),"Continuous
+(Clinical)","9 missing values
+(0.3%)",
+Admission,muac_mm_adm,MUAC (in mm),"Continuous
+(Clinical)","13 missing values
+(0.5%)",
+Admission,hr_bpm_adm,Heart rate,"Continuous
+(Clinical)","1 missing value
+(0.0%)",
+Admission,rr_brpm_app_adm,Respiratory rate,"Continuous
+(Clinical)","5 missing values
+(0.2%)",
+Admission,sysbp_mmhg_adm,Systolic blood pressure,"Continuous
+(Clinical)","2 missing values
+(0.1%)",
+Admission,diasbp_mmhg_adm,Diastolic blood pressure,"Continuous
+(Clinical)","1 missing value
+(0.0%)",
+Admission,temp_c_adm,Axillary temperature (Celsius),"Continuous
+(Clinical)","1 missing value
+(0.0%)",
+Admission,spo2site1_pc_oxi_adm,Oxygen saturation (measure 1),"Continuous
+(Clinical)","4 missing values
+(0.2%)",
+Admission,spo2site2_pc_oxi_adm,Oxygen saturation (measure 2),"Continuous
+(Clinical)","205 missing values
+(7.6%)",
+Admission,spo2other_adm,SpO2 from other device,"Continuous
+(Clinical)","2505 missing values
+(93.2%)",
+Admission,hematocrit_gpdl_adm,Hematocrit (%),"Continuous
+(Laboratory)","457 missing values
+(17.0%)",
+Admission,lactate_mmolpl_adm,Lactate level (mmol/L),"Continuous
+(Laboratory)","464 missing values
+(17.2%)",Collected within 4hrs of admission
+Admission,lactate2_mmolpl_adm,Late lactate level (mmol/L) (optional),"Continuous
+(Laboratory)","2217 missing values
+(82.5%)",Collected within 8hrs of admission
+Admission,glucose_mmolpl_adm,Blood glucose (mmol/L),"Continuous
+(Laboratory)","9 missing values
+(0.3%)",
+Admission,sqi1_perc_oxi_adm,Best admission SQI,"Continuous
+(Recording data)","130 missing values
+(4.8%)",
+Admission,sqi2_perc_oxi_adm,2nd best admission SQI,"Continuous
+(Recording data)","207 missing values
+(7.7%)",
+Admission,momage_adm,"How old is the child's mother?
+
+(Show the field ONLY if:
+ [momageknown_adm] = '1')","Continuous
+(Social)","19 missing values
+(0.7%)",
+Admission,momagefirstpreg_adm,"How old was the child's mother at her first pregnancy?
+
+(Show the field ONLY if: [momagefirstpregknown_adm] = '1')","Continuous
+(Social)","224 missing values
+(8.3%)",
+Admission,householdsize_adm,How many people sleep in the same house as the child?,"Continuous
+(Social)","3 missing values
+(0.1%)",
+Admission,alivechildren_adm,Number of children in family who are alive (including subject),"Continuous
+(Social)","4 missing values
+(0.1%)",
+Admission,deadchildren_adm,Number of children in family who have died,"Continuous
+(Social)","1 missing value
+(0.0%)",
+Outcome,lengthadm,Length of admission,"Discrete
+(Clinical)",No missing values,
+Admission,studyid_adm,Study ID,"Discrete
+(Patient details)",No missing values,
+Collection Type,Variable Name,Field Label,Variable Type,Missing Pattern,Details

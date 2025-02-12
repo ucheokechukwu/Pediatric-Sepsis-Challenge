@@ -7,19 +7,6 @@ from scipy.stats import pointbiserialr, spearmanr, chi2_contingency
 from sklearn.feature_selection import mutual_info_classif
 from sklearn.preprocessing import LabelEncoder
 
-# ORDINAL_MAPPING = {
-#     'age_group': {
-#         'Newborn (0-2m)' : 0,
-#         'Infant (3-5m)' : 1,
-#         'Baby (6-11m)' : 2,
-#         "Toddler (12-23m)": 3,
-#         "Preschool-2 (24-35m)": 4,
-#         "Preschool-3 (36-47m)": 5,
-#         "Preschool-4 (48-59m)": 6,
-#         "5 years (60m)": 7
-#     }
-# }
-
 ORDINAL_MAPPING = {
     'oxygenavail_adm': {
         "Oxygen not available": 0,
@@ -72,21 +59,10 @@ ORDINAL_MAPPING = {
         "Dont know": -1
     },
     # 'exclbreastfed_adm': {
-    #     "never exclusively breastfed": 7,
-    #     "1 month": 6,
-    #     "2 months": 5,
-    #     "3 months": 4,
-    #     "4 months": 3,
-    #     "5 months": 2,
-    #     "6 months": 1,
-    #     "More than 6 months": 0,
-    #     "Unknown": -1
-    # },
-    # 'totalbreastfed_adm': {
-    #     "0-3 months": 3,
-    #     "4-6 months": 2,
-    #     "7-12 months": 1,
-    #     ">12 months": 0,
+    #     "6 months and above": 3,
+    #     "4-5 months": 2,
+    #     "1-3 months": 1,
+    #     "never exclusively breastfed": 0,
     #     "Unknown": -1
     # },
     'traveldist_adm': {
@@ -112,13 +88,6 @@ ORDINAL_MAPPING = {
         "Post secondary (including post S4 technical school)": 0,
         "Dont know": -1
     },
-    # 'tobacco_adm': {
-    #     "Never": 0,
-    #     "Less than monthly": 1,
-    #     "Monthly": 2,
-    #     "Weekly": 3,
-    #     "Daily": 4
-    # },
     'bednet_adm': {
         "Never": 2,
         "Sometimes": 1,
@@ -161,13 +130,15 @@ ORDINAL_MAPPING = {
 }
 
 THREE_VALUE_ORDINAL_MAPPING = {
-    'vaccmeasles_adm': {"Yes": 1, "No": 0, "Unknown": -1},
+    'diarrheaoften_adm': {"No": 0, "Yes": 1, "Dont know": -1},
+    'momhiv_adm': {"Negative": 0, "Unknown": -1, "Positive": 1},
+    'nonexclbreastfed_adm': {"Formula+": 0, "Other+": 1, "N/A - exclusive breastfeeding": -1},
     'priorweekabx_adm': {"No": 0, "Dont know": -1, "Yes": 1},
     'priorweekantimal_adm': {"No": 0, "Yes": 1, "Dont know": -1},
-    'diarrheaoften_adm': {"No": 0, "Yes": 1, "Dont know": -1},
     'tbcontact_adm': {"No": 0, "Yes": 1, "Dont know": -1},
-    'nonexclbreastfed_adm': {"Formula+": 0, "Other+": 1, "N/A - exclusive breastfeeding": -1},
-    'momhiv_adm': {"Negative": 0, "Unknown": -1, "Positive": 1}
+    # 'tobacco_adm': {"Daily": 1, "Less than daily": 0, "Never": -1},
+    # 'totalbreastfed_adm': {"> 6 months": 1, "0-6 months": 0, "Unknown": -1},
+    'vaccmeasles_adm': {"Yes": 1, "No": 0, "Unknown": -1}
 }
 
 NOMINAL_FEATURES = ['deliveryloc_adm', 'caregivermarried_adm', 'cookloc_adm',
@@ -261,6 +232,13 @@ class FeatureTransformer:
                                       unique_values[0] else 0)
 
         return X
+
+    def fit_transform(self, X):
+        """
+        Combines fit and transform methods.
+        """
+        self.fit(X)
+        return self.transform(X)
 
 
 def scale_ordinal_features(X, ordinal_columns):

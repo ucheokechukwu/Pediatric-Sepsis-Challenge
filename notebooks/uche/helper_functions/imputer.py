@@ -58,8 +58,9 @@ class CustomIterativeImputer:
         self.no_default_features = ['traveldist_adm', 'caregiverage_adm', 'caregivermarried_adm',
                                     'momalive_adm', 'momageknown_adm', 'momedu_adm', 'watersource_adm', 'cookfuel_adm___1',
                                     'cookfuel_adm___2', 'cookfuel_adm___3', 'cookfuel_adm___4', 'cookfuel_adm___5', 'cookfuel_adm___6',
-                                    'cookfuel_adm___7', 'cookfuel_adm___8', 'cookloc_adm', 'tobacco_adm', 'momage_adm', 'momagefirstpreg_adm',
-                                    'householdsize_adm']
+                                    'cookfuel_adm___7', 'cookfuel_adm___8', 'cookloc_adm', 'tobacco_adm',
+                                    'momage_adm', 'momagefirstpreg_adm', 'householdsize_adm',
+                                    'sqi1_perc_oxi_adm', 'sqi2_perc_oxi_adm']
 
         # numerical features
         self.numeric_columns = ['height_cm_adm', 'agecalc_adm', 'weight_kg_adm', 'muac_mm_adm',
@@ -330,17 +331,21 @@ class CustomIterativeImputer:
         ### Imputers for Categorical Data (mostly clinical and laboratory)   ###
         ########################################################################
 
-        # Apply categorization for 'exclbreastfed_adm' based on 'agecalc_adm'
+        # Recategorize 'exclbreastfed_adm' based on 'agecalc_adm'
         X['exclbreastfed_adm'] = X[['exclbreastfed_adm', 'agecalc_adm']].apply(
-            self._categorize_breastfeeding, axis=1)
+            self._recategorize_excl_breastfeeding, axis=1)
 
-        # Apply categorization for 'totalbreastfed_adm' based on 'agecalc_adm'
+        # Recategorize 'totalbreastfed_adm' based on 'agecalc_adm'
         X['totalbreastfed_adm'] = X[['totalbreastfed_adm', 'agecalc_adm']].apply(
-            self._categorize_total_breastfeeding, axis=1)
+            self._recategorize_total_breastfeeding, axis=1)
 
-        # Apply categorization for 'nonexclbreastfed_adm' based on 'exclbreastfed_adm'
+        # Recategorize 'nonexclbreastfed_adm' based on 'exclbreastfed_adm'
         X['nonexclbreastfed_adm'] = X[['nonexclbreastfed_adm', 'exclbreastfed_adm']].apply(
-            self._categorize_non_exlc_breastfeeding, axis=1)
+            self._recategorize_non_exlc_breastfeeding, axis=1)
+
+        # Recategorize 'tobacco_adm'
+        X['tobacco_adm'] = X[['tobacco_adm']].apply(
+            self._recategorize_tobacco, axis=1)
 
         # Transform categorical columns while preserving NaNs
         X[self.categorical_cols] = X[self.categorical_cols].astype(object)
@@ -397,8 +402,7 @@ class CustomIterativeImputer:
             X[column] = X.apply(
                 lambda row: medians[row['age_group']] if pd.isnull(
                     row[column]) else row[column],
-                axis=1
-            )
+                axis=1)
 
         # catch-all to fill all missing values based on mode and default values
         for col, mode_value in self.mode_values.items():
@@ -424,33 +428,50 @@ class CustomIterativeImputer:
             X[column] = X['age_group'].map(mapping)
         return X
 
-    def _categorize_breastfeeding(self, row):
+    def _recategorize_excl_breastfeeding(self, row):
         if row['exclbreastfed_adm'] == "Currently exclusively breastfed":
             age_in_months = np.ceil(row['agecalc_adm'])
             if age_in_months <= 1:
-                return "1 month"
+                category = "1 month"
             elif age_in_months <= 6:
-                return f"{int(age_in_months)} months"
+                category = f"{int(age_in_months)} months"
             else:
-                return "More than 6 months"
+                category = "More than 6 months"
         else:
-            return row['exclbreastfed_adm']
+            category = row['exclbreastfed_adm']
 
-    def _categorize_total_breastfeeding(self, row):
+        if category in ["1 month", "2 months", "3 months"]:
+            return "1-3 months"
+        elif category in ["4 months", "5 months"]:
+            return "4-5 months"
+        elif category in ["6 months", "More than 6 months"]:
+            return "6 months and above"
+        else:
+            return category
+
+    def _recategorize_total_breastfeeding(self, row):
         if row['totalbreastfed_adm'] == "Still being breastfed":
             age_in_months = np.ceil(row['agecalc_adm'])
             if age_in_months <= 3:
-                return "0-3 months"
+                category = "0-3 months"
             elif age_in_months <= 6:
-                return "4-6 months"
+                category = "4-6 months"
             elif age_in_months <= 12:
-                return "7-12 months"
+                category = "7-12 months"
             else:
-                return ">12 months"
+                category = ">12 months"
         else:
-            return row['totalbreastfed_adm']
+            category = row['totalbreastfed_adm']
 
-    def _categorize_non_exlc_breastfeeding(self, row):
+        # Recategorization
+        if category in ["0-3 months", "4-6 months"]:
+            return "0-6 months"
+        elif category in ["7-12 months", ">12 months"]:
+            return "> 6 months"
+        else:
+            return category
+
+    def _recategorize_non_exlc_breastfeeding(self, row):
         if pd.isna(row['nonexclbreastfed_adm']):
             if row['exclbreastfed_adm'] == "never exclusively breastfed":
                 row['nonexclbreastfed_adm'] = "Mixed breastfeeding and other"
@@ -459,3 +480,9 @@ class CustomIterativeImputer:
 
         # Ensure all "Mixed breastfeeding and other" values are also transformed
         return "Other+" if "other" in str(row['nonexclbreastfed_adm']).lower() else "Formula+"
+
+    def _recategorize_tobacco(self, row):
+        if row['tobacco_adm'] in ["Less than monthly", "Weekly", "Monthly"]:
+            return "Less than daily"
+        else:
+            return row['tobacco_adm']
