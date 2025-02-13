@@ -138,6 +138,13 @@ def heatmap_all_correlations(df):
 
     # Convert to float and return the correlation matrix
     corr_matrix = corr_matrix.astype(float)
+    corr_matrix = corr_matrix.astype(float)
+    nrow, ncol = corr_matrix.shape
+
+    plt.figure(figsize=(ncol/1.5, nrow/2.5))  # Adjust figure size as needed
+    # annot=False is recommended with many columns
+    sns.heatmap(corr_matrix.astype(float), annot=False, cmap="coolwarm")
+    plt.show()
     return corr_matrix
 
 
@@ -207,7 +214,7 @@ def numerical_analysis(num_col, df, target):
                 color='#DC143C', fill=True, linewidth=2)
 
     # Title and labels
-    plt.title(f"Distribution of {num_col} by Target Outcome")
+    plt.title(f"Distribution of {num_col} by {target} Outcome")
     plt.xlabel(num_col)
     plt.ylabel("Density (Scaled)")
 
@@ -224,27 +231,55 @@ def numerical_analysis(num_col, df, target):
 
 
 def categorical_analysis(cat_col, df, target, color=['#1f77b4', '#ff7f0e']):
+    unique_values = df[cat_col].nunique()
+
+    if unique_values == 1:
+        # Special case when there is only one unique value in the category
+        unique_value = df[cat_col].unique()[0]
+        target_counts = df[target].value_counts(normalize=True)
+
+        # Plot target distribution for the single category
+        target_counts.plot(kind='bar', color=color, figsize=(6, 4))
+        plt.title(
+            f'Distribution of {target} within {cat_col} = {unique_value}')
+        plt.xlabel(target)
+        plt.ylabel('Proportion')
+        plt.xticks(ticks=[0, 1], labels=[
+                   '0 (Negative)', '1 (Positive)'], rotation=0)
+        plt.ylim(0, 1)
+
+        # Display category info
+        result = f"Only one category ({unique_value}) present in {cat_col}.\nShowing target distribution."
+        plt.text(1.05, 0.5, result, ha='left', va='center', fontsize=10, color='black',
+                 transform=plt.gca().transAxes, wrap=True)
+
+        plt.show()
+        return
+
+    # Perform chi-square test if more than one unique value exists
     contingency_table = pd.crosstab(df[cat_col], df[target])
     chi2, p, _, _ = chi2_contingency(contingency_table)
     cramer_v = np.sqrt(
         chi2 / (df.shape[0] * (min(contingency_table.shape) - 1)))
+
     if p < 0.05:
-        result = f"The {cat_col} category significantly influences the outcome with Cramer_v of: {
-            cramer_v:0.1f}."
+        result = f"The {cat_col} category significantly influences the outcome with Cramer_v of: {cramer_v:0.2f}."
         result_color = 'maroon'
     else:
-        result = f"No significant influence of {
-            cat_col} category on the outcome."
+        result = f"No significant influence of {cat_col} category on the outcome."
         result_color = 'black'
+
+    # Calculate proportions
     proportions = df.groupby([cat_col, target]).size().unstack().fillna(0)
     proportions = proportions.div(proportions.sum(axis=1), axis=0)
     proportions = proportions.sort_values(by=[0])
 
+    # Plot proportions
     proportions.plot(kind='bar', stacked=True, color=color, figsize=(10, 6))
     plt.text(1.05, 0.5, result, ha='left', va='center', fontsize=10, color=result_color,
              transform=plt.gca().transAxes, wrap=True)
-    plt.title(f'Relative Proportions of Target Outcome per {
-              cat_col.capitalize()} Category')
+    plt.title(
+        f'Relative Proportions of {target} Outcome per {cat_col.capitalize()} Category')
     plt.xlabel(f'{cat_col.capitalize()}')
     plt.legend(title=target, labels=[
                '0 (Negative)', '1 (Positive)'], bbox_to_anchor=(1.05, 1), loc='upper left')
