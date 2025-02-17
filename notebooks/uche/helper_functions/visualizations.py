@@ -230,10 +230,12 @@ def numerical_analysis(num_col, df, target):
     plt.show()
 
 
-def categorical_analysis(cat_col, df, target, color=['#1f77b4', '#ff7f0e']):
+def categorical_analysis(cat_col, df, target, color=['#1f77b4', '#ff7f0e'], return_result_only=False):
     unique_values = df[cat_col].nunique()
 
     if unique_values == 1:
+        if return_result_only:
+            return None
         # Special case when there is only one unique value in the category
         unique_value = df[cat_col].unique()[0]
         target_counts = df[target].value_counts(normalize=True)
@@ -263,11 +265,14 @@ def categorical_analysis(cat_col, df, target, color=['#1f77b4', '#ff7f0e']):
         chi2 / (df.shape[0] * (min(contingency_table.shape) - 1)))
 
     if p < 0.05:
-        result = f"The {cat_col} category significantly influences the outcome with Cramer_v of: {cramer_v:0.2f}."
+        result = f"The {cat_col} category significantly influences the outcome with Cramer_v of: {cramer_v:0.2f} and a p-factor of {p:0.2f}."
         result_color = 'maroon'
     else:
-        result = f"No significant influence of {cat_col} category on the outcome."
+        result = f"No significant influence of {cat_col} category on the outcome. The p-factor is {p:0.2f}."
         result_color = 'black'
+
+    if return_result_only:
+        return cramer_v if p < 0.05 else None
 
     # Calculate proportions
     proportions = df.groupby([cat_col, target]).size().unstack().fillna(0)

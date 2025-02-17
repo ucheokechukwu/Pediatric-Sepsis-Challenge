@@ -1,15 +1,13 @@
+import warnings
+import pandas as pd
+import numpy as np
+import seaborn as sns
 from helper_functions.imputer import CustomIterativeImputer
 from helper_functions.visualizations import *
 from helper_functions.feature_transformer import *
 import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
-import pandas as pd
-from rich import pretty
-import warnings
-warnings.filterwarnings("ignore")
 
-pretty.install()
+warnings.filterwarnings("ignore")
 
 
 data = pd.read_csv(
